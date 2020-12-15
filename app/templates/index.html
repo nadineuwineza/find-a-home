@@ -1,1 +1,26 @@
+ {% extends 'base.html'%} {%block navbar %} {% include 'navbar.html' %} {% endblock %} {% block content %} {% for quote in getquotes %}
+<div class="container-fluid" style="font-size: 20px; font-family: 'Merienda', cursive;  padding-top: 40px;">
+    <div class="jumbotron hjumbo">
+        <div class="overlay">
+            <h1 class="text-center text-bold" style="color: #9933CC;">WELCOME TO YOUR NEW HOME</h1>
+        </div>
+    </div>
+    <div>
+        <div class="card card-image">
+            <div class="text-white text-center unique-color py-5 px-4">
+                <div class="py-5">
+                    <h5 class="h5 purple-text"><i class="fas fa-comment fa-fw"></i> Blogging is a conversation, not a code.
+                    </h5>
+                    <h2 class="card-title h2 my-4 py-2">{{quote.author}}</h2>
+                    <p class="mb-4 pb-2 px-md-5 mx-md-5">{{quote.quote}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer font-small dark secondary-color">
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:Find a home|
 
+        </div>
+    </footer>
+</div>
+{% endfor %} {% endblock %}

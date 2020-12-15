@@ -4,9 +4,9 @@ from .models import Quote
 base_url = None
 def configure_request(app):
     global base_url
-    base_url = app.config['QUOTE_API_BASE_URL']
+    base_url ='http://quotes.stormconsultancy.co.uk/random.json'
 def getQuotes():
-    with urllib.request.urlopen(base_url) as url:
+    with urllib.request.urlopen('http://quotes.stormconsultancy.co.uk/random.json') as url:
         quotesResponse = url.read()
         word = json.loads(quotesResponse)
         print(word)
