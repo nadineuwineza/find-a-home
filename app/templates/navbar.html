@@ -1,57 +1,57 @@
-<nav class="mb-1 navbar navbar-expand-lg blue-gradient fixed-top text-white">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333" aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark secondary-color">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="/">FIND A HOME
+        <span class="sr-only">(current)</span>
+    </a>
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-        <ul class="navbar-nav mr-auto text-white">
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url_for('main.index')}}">Home
-          </a>
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/">Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/">About</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-
-                <a class="nav-link" href="#">Umoja</a>
-
-                <a class="nav-link" href="/">Kasarani</a>
-
-                <a class="nav-link" href="/">Karen</a>
-
-
-                <a class="nav-link" href="">Runda</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/">Find a home</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="">KAREN</a>
+                    <a class="dropdown-item " href="">RUNDA</a>
+                    <a class="dropdown-item " href="">UMOJA</a>
+                    <a class="dropdown-item " href="">EMBAKASI</a>
+                    <a class="dropdown-item " href="">KASARANI</a>
+                    <a class="dropdown-item " href="">PIPELINE</a>
 
 
-                <a class="nav-link" href="">Mlolongo</a>
-
-                <a class="nav-link" href="">South C</a>
-
-
-                <a class="nav-link" href="">Kibera</a>
-
-
-                <a class="nav-link" href="">Others</a>
+                </div>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto text-white">
-            {% if current_user.is_authenticated %}
+        <ul class="navbar-nav ml-auto">
+            <li>
+                <a class="nav-link text-white pr-4" aria-haspopup="true" aria-expanded="false" href="{{url_for('main.profile',username=current_user.username)}}">🙎‍♂️Profile</a>
+            </li>
+            <li>
+                <a class="nav-link text-white pr-4" aria-haspopup="true" aria-expanded="false" href="/">🙎‍♂️Subscribe</a>
+            </li>
+            <li>
+                <a class="nav-link text-white pr-4" aria-haspopup="true" aria-expanded="false" href="/">Post Home</a>
+            </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('main.profile',username=current_user.username)}}"><span
-              class="badge badge-primary"><i class="fas fa-user"></i> {{current_user.username | capitalize}}</span>
-          </a>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if current_user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/">{{current_user.username}}</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{url_for('auth.logout')}}">🙎‍♂️Logout</a> {% else %}
+                    <a class="dropdown-item text-white" href="{{url_for('auth.login')}}">🙎‍♂️Login</a> {%endif%}
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i> Sign out
-          </a>
-            </li>
-            {%else%}
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.login')}}">Sign in
-          </a>
-            </li>
-            {%endif%}
         </ul>
     </div>
 </nav>
