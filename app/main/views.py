@@ -15,10 +15,9 @@ def index():
     View root page function that returns the index page and its data
     '''
     getquotes = getQuotes()
-    return render_template('index.html',getquotes = getquotes)
     articles=Article.get_all_articles()
     popular=Article.query.order_by(Article.article_upvotes.desc()).limit(3).all()
-    return render_template('index.html',quotes=quotes,articles=articles,popular=popular)
+    return render_template('index.html',getquotes = getquotes, articles=articles,popular=popular)
 
 
 

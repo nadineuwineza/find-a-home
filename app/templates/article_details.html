@@ -3,8 +3,10 @@
     <h4 class="text-center mt-0 pt-0 mb-3"><strong>{{article.article_title}}</strong></h4>
     <div class="row pt-3">
         <div class="col-lg-6 col-md-6 col-sm-12 card text-center card-cascade wider pitch mx-auto mb-3 text-white">
-            <div class="pb-4 view view-cascade gradient-card-header overlay waves-light" style="background-image: url({{url_for('static',filename=article.article_cover_path)}});">
-                <h2 class="card-header-title">{{article.article_title}}</h2>
+
+            <div class="pb-4 view view-cascade gradient-card-header overlay waves-light" style="background-image: url({{url_for('static',filename=article.article_cover_path)}}); height: 50vh; background-repeat:no-repeat; width:170%; ">
+
+                <h2 class="card-header-title" style="color: black;">{{article.article_title}}</h2>
                 <div class="text-center">
                     <a href="#" class="badge badge-default">{{article.user.username}}</a>
                     <a href="{{url_for('main.article_by_tag',tag=article.article_tag)}}" class="badge badge-info">{{article.article_tag}}</a>
@@ -20,13 +22,13 @@
             <div style="margin-top: -3vh;" class="card-body card-body-cascade text-center pb-5 pt-3">
                 <p class="card-text">{{article.article_body}}.</p>
             </div>
+
         </div>
         <div class="comments jumbotron col-lg-6 col-md-6 col-sm-12 mx-auto">
             <h3>Comments</h3>
             <div class="my-2">
                 {%if comments%} {%for comment in comments%}
                 <div class="chip">
-                    <img src="{{url_for('static',filename=comment.user.profile_pic_path)}}" onerror="this.onerror=null;this.src='https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png';" alt="Contact Person">
                     <p>{{comment.comment}}</p>
                     {%if article.user.username==current_user.username%}
                     <a href="{{url_for('main.delete_comment',comment_id=comment.id,article_id=article.id)}}" class="btn-floating btn-small mr-3 btn-fb waves-effect waves-light">
