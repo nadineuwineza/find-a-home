@@ -1,0 +1,5 @@
+Hello {{subscriber.name}}
+Welcome to Find a Home
+We have just seen you have signed up for our application and want to welcome you to the family. Will keep updating you on the house posted.
+
+Thanks 

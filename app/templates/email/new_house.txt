@@ -1,0 +1,10 @@
+Dear Subscriber!
+
+Sign in and check out this new House posted and comment
+
+Title: {{new_article.article_title}}
+Descriptions: {{new_article.article_body|truncate(30)}}
+
+
+Yours sincerely,
+Find a home Admin.

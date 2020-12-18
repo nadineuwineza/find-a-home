@@ -13,3 +13,10 @@ class UpdateProfile(FlaskForm):
 class CommentForm(FlaskForm):
     comment = TextAreaField('Enter your comment')
     submit = SubmitField('Comment')
+
+class SubscriberForm(FlaskForm):
+    email = StringField('Your Email Address')
+    name = StringField('Enter your name',validators = [Required()])
+    submit = SubmitField('Subscribe')
+
+

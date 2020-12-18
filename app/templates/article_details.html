@@ -4,7 +4,7 @@
     <div class="row pt-3">
         <div class="col-lg-6 col-md-6 col-sm-12 card text-center card-cascade wider pitch mx-auto mb-3 text-white">
 
-            <div class="pb-4 view view-cascade gradient-card-header overlay waves-light" style="background-image: url({{url_for('static',filename=article.article_cover_path)}}); height: 50vh; background-repeat:no-repeat; width:170%; ">
+            <div class="pb-4 view view-cascade gradient-card-header overlay waves-light" style="background-image: url({{url_for('static',filename=article.article_cover_path)}}); height: 50vh; background-repeat:no-repeat; width:170%;">
 
                 <h2 class="card-header-title" style="color: black;">{{article.article_title}}</h2>
                 <div class="text-center">
@@ -32,7 +32,7 @@
                     <p>{{comment.comment}}</p>
                     {%if article.user.username==current_user.username%}
                     <a href="{{url_for('main.delete_comment',comment_id=comment.id,article_id=article.id)}}" class="btn-floating btn-small mr-3 btn-fb waves-effect waves-light">
-                        <i class="far fa-trash-alt"></i>
+                        <i class="far fa-trash-alt "></i>
                     </a>
                     {%endif%}
                 </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
         {%if article.user.username==current_user.username%}
-        <a href="{{url_for('main.delete_article',article_id=article.id)}}" class="mb-4 mx-auto text-center"><button type="button" class="btn btn-danger">DELETE ARTICLE</button></a> {%endif%}
+        <a href="{{url_for( 'main.delete_article',article_id=article.id)}}" class="mb-4 mx-auto text-center"><button type="button" class="btn btn-danger">DELETE ARTICLE</button></a> {%endif%}
     </div>
     {{wtf.quick_form(comment_form)}}
 

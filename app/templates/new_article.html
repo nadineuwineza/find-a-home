@@ -1,18 +1,23 @@
 {% extends 'base.html' %} {%block content%}
-<div class="new-article mt-5">
-    <p class="h4 mb-4 text-center">New House</p>
-    <form class="article-form m-auto" action="" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="article_title">House Type</label>
-            <input type="text" class="form-control" name="title" id="article_title" placeholder="Article Title" required>
-        </div>
-        <div class="form-group">
-            <label for="article_body">House Description</label>
-            <textarea class="form-control" name="body" id="article_body" rows="3" placeholder="Write Article" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="article_tag">Cloud Tag</label>
-            <select class="form-control" name="tag" id="article_tag" required>
+<div class="container-fluid" class="abt">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="new-article mt-5">
+                <h1 class="h4 mb-4 text-center" id="about">New House </h1>
+                <form class="article-form m-auto" action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="article_title">House Type</label>
+                        <input type="text" class="form-control" name="title" id="article_title" placeholder="Article Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="article_body">House Description</label>
+                        <textarea class="form-control" name="body" id="article_body" rows="3" placeholder="Write Article" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="article_tag">House Tag</label>
+                        <select class="form-control" name="tag" id="article_tag" required>
         <option value="karen">Karen</option>
         <option value="runda">Runda</option>
         <option value="umoja">Umoja</option>
@@ -23,16 +28,39 @@
         <option value="thika">Thika</option>
         <option value=" Others">Others</option>
       </select>
-        </div>
-        <div class="file-field">
-            <div class="btn btn-primary btn-sm float-left">
-                <span>Choose House Cover</span><br><br>
-                <input type="file" name="photo" id="photo" required>
+                    </div>
+                    <div class="file-field">
+                        <div class="btn btn-primary btn-sm float-left">
+                            <span>Choose House Cover</span><br><br>
+                            <input type="file" name="photo" id="photo" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="submit" value="POST A HOUSE">
+                    </div>
+                </form>
             </div>
+
         </div>
-        <div class="form-group">
-            <input class="form-control" type="submit" value="POST A HOUSE">
+        <div class="col-md-6">
+            <img src="../static/images/house4.jpeg" alt="" width="700px" style='margin-top:130px;'>
         </div>
-    </form>
+    </div>
 </div>
+
+
+<style>
+    .abt {
+        margin-top: 50px;
+    }
+    
+    #about {
+        text-decoration: underline;
+        color: gold;
+    }
+    
+    body {
+        background-image: url('../static/images/back5.jpeg');
+    }
+</style>
 {%endblock%}

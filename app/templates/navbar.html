@@ -1,58 +1,58 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <!-- Navbar brand -->
-    <a class="navbar-brand " href="/ ">FIND A HOME
+    <a class="navbar-brand" href="/">FIND A HOME
         <span class="sr-only ">(current)</span>
     </a>
     <!-- Collapse button -->
-    <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#basicExampleNav " aria-controls="basicExampleNav " aria-expanded="false " aria-label="Toggle navigation ">
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#basicExampleNav " aria-controls="basicExampleNav " aria-expanded="false " aria-label="Toggle navigation ">
       <span class="navbar-toggler-icon "></span>
     </button>
-    <div class="collapse navbar-collapse " id="basicExampleNav ">
-        <ul class="navbar-nav mr-auto ">
-            <li class="nav-item active ">
-                <a class="nav-link text-light " href="/ ">HOME <span
-                        class="sr-only ">(current)</span></a>
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/ ">HOME <span
+                        class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link text-light " href="/ ">ABOUT</a>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{{url_for('main.about')}}">ABOUT</a>
             </li>
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false " href="/ ">FIND A HOME</a>
-                <div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink ">
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='karen' )}} ">KAREN</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='runda' )}} ">RUNDA</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='umoja' )}} ">UMOJA</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='embakasi' )}} ">EMBAKASI</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='kasarani' )}} ">KASARANI</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='pipeline' )}} ">PIPELINE</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='thika' )}} ">THIKA</a>
-                    <a class="dropdown-item " href="{{url_for( 'main.article_by_tag',tag='Others' )}} ">Others</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/">FIND A HOME</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='karen' )}}">KAREN</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='runda' )}}">RUNDA</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='umoja' )}}">UMOJA</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='embakasi' )}}">EMBAKASI</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='kasarani' )}}">KASARANI</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='pipeline' )}}">PIPELINE</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='thika' )}}">THIKA</a>
+                    <a class="dropdown-item" href="{{url_for( 'main.article_by_tag',tag='Others' )}}">Others</a>
 
 
 
                 </div>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto ">
+        <ul class="navbar-nav ml-auto">
             <li>
-                <a class="nav-link text-white pr-4 " aria-haspopup="true " aria-expanded="false " href="{{url_for( 'main.profile',username=current_user.username)}} ">🙎‍♂️PROFILE</a>
+                <a class="nav-link text-white pr-4" aria-haspopup="true" aria-expanded="false" href="{{url_for( 'main.profile',username=current_user.username)}}">🙎‍♂️PROFILE</a>
             </li>
             <li>
-                <a class="nav-link text-white pr-4 " aria-haspopup="true " aria-expanded="false " href="/ ">🙎‍♂️SUBSCRIBE</a>
+                <a class="nav-link text-white pr-4" aria-haspopup="true" aria-expanded="false" href="{{url_for( 'main.subscriber',uname=current_user.username)}}">🙎‍♂️SUBSCRIBE</a>
             </li>
             <li>
-                <a class="nav-link text-white pr-4 " aria-haspopup="true " aria-expanded="false " href="{{url_for( 'main.new_article')}} ">POST HOME</a>
+                <a class="nav-link text-white pr-4" aria-haspopup="true" aria-expanded="false" href="{{url_for( 'main.new_article')}}">POST HOME</a>
             </li>
 
         </ul>
-        <ul class="navbar-nav ml-auto ">
+        <ul class="navbar-nav ml-auto">
             {% if current_user.is_authenticated %}
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false " href="/ ">{{current_user.username}}</a>
-                <div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink ">
-                    <a class="dropdown-item " href="{{url_for( 'auth.logout')}} ">🙎‍♂️LOGOUT</a> {% else %}
-                    <a class="dropdown-item text-white " href="{{url_for( 'auth.login')}} ">🙎‍♂️LOGIN</a> {%endif%}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/">{{current_user.username}}</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{url_for( 'auth.logout')}}">🙎‍♂️LOGOUT</a> {% else %}
+                    <a class="dropdown-item text-white" href="{{url_for( 'auth.login')}}">🙎‍♂️LOGIN</a> {%endif%}
                 </div>
             </li>
         </ul>

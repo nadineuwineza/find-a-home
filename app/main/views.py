@@ -1,8 +1,8 @@
 from flask import render_template,abort,request,redirect,url_for,flash
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Article,Comment
-from .forms import UpdateProfile,CommentForm
+from ..models import User,Article,Comment,Subscriber
+from .forms import UpdateProfile,CommentForm,SubscriberForm
 from .. import db,photos
 from ..requests import getQuotes
 from ..email import mail_message
@@ -19,6 +19,13 @@ def index():
     popular=Article.query.order_by(Article.article_upvotes.desc()).limit(3).all()
     return render_template('index.html',getquotes = getquotes, articles=articles,popular=popular)
 
+@main.route('/about')
+def about():
+
+    '''
+    View root page function that returns the about page and its data
+    '''
+    return render_template('about.html')
 
 
 @main.route('/profile/<username>')
@@ -78,6 +85,7 @@ def update_pic(username):
 @main.route('/article/new',methods= ['GET','POST'])
 @login_required
 def new_article():
+    subscribers = Subscriber.query.all()
     if request.method=='POST':
         article_title=request.form['title']
         article_body=request.form['body']
@@ -89,6 +97,13 @@ def new_article():
         new_article.save_article()
 
         flash('Article added')
+
+
+        for subscriber in subscribers:
+            mail_message("Alert New House Posted","email/new_house",subscriber.email,new_article=new_article)
+        return redirect(url_for('main.index'))
+        flash('New House Posted')
+
         return redirect(url_for('main.index'))
 
     return render_template('new_article.html') 
@@ -183,4 +198,31 @@ def delete_article(article_id):
   db.session.commit()
   flash('You deleted an article')
   return redirect(url_for('main.index'))
+
+
+@main.route('/subscribe', methods=['GET','POST'])
+def subscriber():
+
+    subscriber_form=SubscriberForm()
+    article = Article.query.order_by(Article.posted.desc()).all()
+
+    if subscriber_form.validate_on_submit():
+
+        subscriber= Subscriber(email=subscriber_form.email.data,name = subscriber_form.name.data)
+
+        db.session.add(subscriber)
+        db.session.commit()
+
+        mail_message("Welcome to Find a Home","email/subscriber",subscriber.email,subscriber=subscriber)
+
+        title= "Find a home"
+        return render_template('index.html',title=title, article=article)
+
+    subscriber = Article.query.all()
+
+    article = Article.query.all()
+
+
+    return render_template('subscribe.html',subscriber=subscriber,subscriber_form=subscriber_form,article=article)
+
  
